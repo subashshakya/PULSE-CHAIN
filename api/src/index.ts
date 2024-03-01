@@ -4,10 +4,19 @@ import ReportRoutes from './routes/report-routes';
 
 const app = express();
 const port = 3000;
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
+let corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200
+}
 
 new Connection().init();
 
-app.use('/reports', ReportRoutes);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/reports', cors(corsOptions), ReportRoutes);
 app.get('/', (req, res) => {
   res.send('Connection Established')
 })

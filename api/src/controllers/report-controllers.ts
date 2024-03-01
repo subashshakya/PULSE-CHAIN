@@ -12,9 +12,10 @@ export const queryAllReports = async (req: Request, res: Response) => {
 }
 
 export const createReport = async (req: Request, res: Response) => {
+  console.log(req.body)
   const { reportId, report } = req.body;
   console.log(reportId);
-  console.log(report);
+  console.log(report)
   if (!reportId || !report) {
     console.log("Request is invalid")
     return res.status(400).json({ message: "Bad Request: Missing report id or report details" })
@@ -28,6 +29,7 @@ export const createReport = async (req: Request, res: Response) => {
         ...report
       })
     )
+    console.log
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal server error"});

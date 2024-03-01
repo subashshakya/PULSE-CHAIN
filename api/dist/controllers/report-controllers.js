@@ -21,6 +21,7 @@ const queryAllReports = (req, res) => __awaiter(void 0, void 0, void 0, function
 });
 exports.queryAllReports = queryAllReports;
 const createReport = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.body);
     const { reportId, report } = req.body;
     console.log(reportId);
     console.log(report);
